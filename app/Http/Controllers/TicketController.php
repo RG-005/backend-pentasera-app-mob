@@ -35,4 +35,9 @@ class TicketController extends Controller
             'data' => $ticket
         ], 201);
     }
+    public function show($id)
+    {
+        $ticket = Ticket::findOrFail($id);
+        return response()->json($ticket);
+    }
 }

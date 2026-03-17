@@ -37,4 +37,9 @@ class EventController extends Controller
             'data' => $event
         ],201);
     }
+    public function show($id)
+    {
+        $event = Event::with('tickets')->findOrFail($id);
+        return response()->json($event);
+    }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
          Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->enum('metode', ['qris', 'ewallet', 'virtual_account', 'bank_transfer']);
             $table->decimal('jumlah_bayar', 10, 2);
             $table->enum('status_pembayaran', ['pending', 'paid', 'failed'])->default('pending');
